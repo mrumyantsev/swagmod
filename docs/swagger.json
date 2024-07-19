@@ -1,0 +1,217 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server celler server.",
+        "title": "Swagger Example API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/accounts": {
+            "get": {
+                "description": "get accounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "accounts"
+                ],
+                "summary": "List accounts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "email",
+                        "description": "name search by q",
+                        "name": "q",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.ResponseOk"
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/main.ResponseError1"
+                        }
+                    },
+                    "202": {
+                        "description": "Accepted",
+                        "schema": {
+                            "$ref": "#/definitions/main.ResponseError2"
+                        }
+                    },
+                    "203": {
+                        "description": "Non-Authoritative Information",
+                        "schema": {
+                            "$ref": "#/definitions/main.ResponseError3"
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{id}": {
+            "get": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "accounts"
+                ],
+                "summary": "Show an account",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Account ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.ResponseOk"
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/main.ResponseError1"
+                        }
+                    },
+                    "202": {
+                        "description": "Accepted",
+                        "schema": {
+                            "$ref": "#/definitions/main.ResponseError2"
+                        }
+                    },
+                    "203": {
+                        "description": "Non-Authoritative Information",
+                        "schema": {
+                            "$ref": "#/definitions/main.ResponseError3"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.ResponseError1": {
+            "type": "object",
+            "properties": {
+                "errno": {
+                    "type": "integer",
+                    "example": 11055
+                },
+                "extra": {
+                    "type": "string",
+                    "example": "extra 1"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "error 1"
+                },
+                "payload": {
+                    "type": "string",
+                    "example": ""
+                }
+            }
+        },
+        "main.ResponseError2": {
+            "type": "object",
+            "properties": {
+                "errno": {
+                    "type": "integer",
+                    "example": 11068
+                },
+                "extra": {
+                    "type": "string",
+                    "example": "extra 2"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "error 2"
+                },
+                "payload": {
+                    "type": "string",
+                    "example": ""
+                }
+            }
+        },
+        "main.ResponseError3": {
+            "type": "object",
+            "properties": {
+                "errno": {
+                    "type": "integer",
+                    "example": 11070
+                },
+                "extra": {
+                    "type": "string",
+                    "example": "extra 3"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "error 3"
+                },
+                "payload": {
+                    "type": "string",
+                    "example": ""
+                }
+            }
+        },
+        "main.ResponseOk": {
+            "type": "object",
+            "properties": {
+                "errno": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "extra": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": ""
+                },
+                "payload": {
+                    "type": "string",
+                    "example": "{\"id\": 4298009, \"createDatetime\": \"2006-06-26T09:37Z08:00\"}"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BasicAuth": {
+            "type": "basic"
+        }
+    },
+    "externalDocs": {
+        "description": "OpenAPI",
+        "url": "https://swagger.io/resources/open-api/"
+    }
+}
